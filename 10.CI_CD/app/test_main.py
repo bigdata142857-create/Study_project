@@ -4,6 +4,7 @@ import httpx
 import pytest
 from fastapi.testclient import TestClient
 
+import main
 from main import app, db
 
 client = TestClient(app)
@@ -43,11 +44,17 @@ def test_get_item_not_found():
 
 
 # 4. DB 저장 실패 (Mock으로 강제 발생)
-def test_create_item_db_failure(monkeypatch):
-    def broken_setitem(key, value):
+class BrokenDict(dict):
+    """저장(__setitem__) 시 항상 실패하는 가짜 DB."""
+
+    def __setitem__(self, key, value):
         raise RuntimeError("db down")
 
-    monkeypatch.setattr(db, "__setitem__", broken_setitem)
+
+def test_create_item_db_failure(monkeypatch):
+    # main 모듈이 참조하는 db 자체를 "고장난 dict"로 통째로 교체한다.
+    # 일반 dict의 __setitem__은 내장 타입 메서드라 직접 monkeypatch할 수 없다.
+    monkeypatch.setattr(main, "db", BrokenDict())
     res = client.post("/items", json={"name": "apple", "price": 1000})
     assert res.status_code == 500
 

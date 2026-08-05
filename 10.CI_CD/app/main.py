@@ -1,8 +1,15 @@
+import logging
 import os
 
 import httpx
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, field_validator
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("app")
 
 app = FastAPI()
 
@@ -36,7 +43,8 @@ def create_item(item: ItemIn) -> dict:
         _next_id += 1
         return new_item
     except Exception:
-        # 시나리오: DB 저장 실패
+        # 시나리오: DB 저장 실패 -> 전체 traceback을 로그로 남김
+        logger.exception("아이템 저장 실패 (item=%s)", item)
         raise HTTPException(status_code=500, detail="failed to save item")
 
 
@@ -45,6 +53,7 @@ def get_item(item_id: int) -> dict:
     item = db.get(item_id)
     if item is None:
         # 시나리오: 데이터가 존재하지 않음
+        logger.warning("존재하지 않는 아이템 조회 시도: item_id=%s", item_id)
         raise HTTPException(status_code=404, detail="item not found")
     return item
 
@@ -61,6 +70,7 @@ async def chat(payload: ChatIn) -> dict:
     api_key = os.environ.get("LLM_API_KEY")
     if not api_key:
         # 시나리오: 환경변수 누락
+        logger.error("LLM_API_KEY 환경변수가 설정되어 있지 않음")
         raise HTTPException(status_code=500, detail="LLM_API_KEY is not set")
 
     try:
@@ -73,9 +83,11 @@ async def chat(payload: ChatIn) -> dict:
             resp.raise_for_status()
             return resp.json()
     except httpx.TimeoutException:
-        # 시나리오: 외부 LLM API Timeout
+        # 시나리오: 외부 LLM API Timeout -> traceback 포함 로그
+        logger.exception("LLM API 호출 timeout 발생")
         raise HTTPException(status_code=504, detail="LLM API timeout")
     except httpx.HTTPStatusError as e:
+        logger.exception("LLM API 호출 실패: %s", e)
         raise HTTPException(status_code=502, detail=f"LLM API error: {e}")
 
 
@@ -83,5 +95,6 @@ async def chat(payload: ChatIn) -> dict:
 def health() -> dict:
     if not os.environ.get("LLM_API_KEY"):
         # 시나리오: 서버 Health Check 실패
+        logger.warning("Health check 실패: LLM_API_KEY 환경변수 누락")
         raise HTTPException(status_code=503, detail="unhealthy: missing LLM_API_KEY")
     return {"status": "ok"}
