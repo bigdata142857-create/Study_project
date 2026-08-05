@@ -1,4 +1,4 @@
-# AI Study Project
+# Study Project
 
 ## 프로젝트 소개
 AI, NLP, RAG, LLM DEV 관련 기술을 학습하고 실습한 내용을 정리한 스터디 프로젝트입니다.
