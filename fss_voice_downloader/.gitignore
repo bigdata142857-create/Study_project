@@ -1,0 +1,4 @@
+fss_voice_files/
+*.zip
+__pycache__/
+*.py[cod]
