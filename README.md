@@ -1,139 +1,53 @@
 # Study Project
 
-## 프로젝트 소개
+AI/NLP부터 RAG, Backend, Database, Docker, CI/CD까지 학습하며 **개념을 직접 코드로 구현하고 기록한 저장소**입니다.
 
-AI, NLP, RAG, LLM 및 백엔드·인프라 관련 기술을 학습하고 직접 구현한 내용을 정리한 스터디 저장소입니다.
+단순히 라이브러리 사용법을 따라가는 것보다, 기술이 왜 필요한지 이해하고 작은 실습으로 확인한 뒤 서로 연결되는 흐름을 익히는 것을 목표로 했습니다.
 
-개념을 이해하는 것에 그치지 않고,
-**NLP 기초 → Embedding → Transformer → RAG → API → Database → Docker → CI/CD**로 학습 범위를 확장하며 각 기술이 실제 서비스에서 어떻게 연결되는지 이해하는 것을 목표로 진행했습니다.
+[![CI](https://github.com/bigdata142857-create/Study_project/actions/workflows/ci.yml/badge.svg)](https://github.com/bigdata142857-create/Study_project/actions/workflows/ci.yml)
 
----
+## 학습 흐름
 
-## 학습 목표
-
-* NLP와 문장 임베딩의 기본 원리 이해
-* Attention, Transformer, BERT, GPT 구조 학습
-* 다양한 Chunking 및 Retrieval 방식 구현
-* RAG 파이프라인 구성 및 평가 방법 학습
-* FastAPI를 활용한 REST API 구현
-* PostgreSQL 및 SQLAlchemy를 활용한 데이터베이스 연동
-* Docker와 Docker Compose를 활용한 서비스 환경 구성
-* GitHub Actions 기반 CI 과정 학습
-
----
+`Statistical NLP → RNN/LSTM/Attention → Embedding → GPT Decoder → Sentence Embedding → Chunking → RAG → RAG Evaluation → Backend/DB → Docker → CI/CD`
 
 ## 주요 학습 영역
 
-### NLP & Embedding
-
-* Text Preprocessing
-* Sentence Embedding
-* Cosine Similarity
-* Sentence Transformers
-
-### Deep Learning & LLM
-
-* RNN / LSTM
-* Attention
-* Transformer
-* BERT
-* GPT Decoder
-
-### RAG
-
-* Chunking
-* Embedding
-* Retrieval
-* Parent-Child Retrieval
-* Hierarchical Retrieval
-* Multi-hop Retrieval
-* Query Rewrite
-* Post-Retrieval Processing
-* Grounding
-* Citation
-* RAG Evaluation
-
-### Backend & Database
-
-* FastAPI
-* REST API
-* Pydantic
-* PostgreSQL
-* SQLAlchemy ORM
-* Table / Relationship 설계
-* CRUD
-
-### Docker & CI/CD
-
-* Dockerfile
-* Docker Container
-* Docker Compose
-* Container Log / Shell
-* Health Check
-* GitHub Actions
-* Test 및 Code Quality Check
-
----
+| 영역 | 학습/구현 내용 | 디렉토리 |
+|---|---|---|
+| Statistical NLP | N-gram, 빈도 기반 다음 단어 예측 | [01.statistical_NLP](./01.statistical_NLP/) |
+| Sequence Model | RNN, LSTM Gate, Attention | [02. RNN, LSTM, Attention](./02.%20RNN%2C%20LSTM%2C%20Attention/) |
+| Data Modeling | dict, dataclass, Pydantic 기반 데이터 검증 | [02.data_modeling_vertification](./02.data_modeling_vertification/) |
+| Embedding | Token ID와 `nn.Embedding` | [03. Embedding & Positional](./03.%20Embedding%20%26%20Positional/) |
+| LLM Structure | GPT Decoder block 구조 | [04.GPT_decoder](./04.GPT_decoder/) |
+| Sentence Embedding | BERT CLS, SentenceTransformer, Cosine Similarity | [05.Sentence_embedding](./05.Sentence_embedding/) |
+| Chunking | Overlap, Recursive, Semantic Chunking | [06.Chunking](./06.Chunking/) |
+| Database | PostgreSQL, SQLAlchemy ORM | [06.DB_practice](./06.DB_practice/) |
+| RAG Basics | Relevance/Correctness 유사도 실습 | [07.RAG_cor](./07.RAG_cor/) |
+| Docker Practice | FastAPI + PostgreSQL + Docker Compose + Health Check | [07_docker_practice](./07_docker_practice/) |
+| RAG Retrieval | Parent-Child Retrieval, Multi-hop Retrieval, 평가 데이터셋 | [08. RAG_평가](./08.%20RAG_%ED%8F%89%EA%B0%80/) |
+| RAG Reliability | Post-retrieval Filtering/Deduplication/Clustering | [09.Post-retrieval·Multi-turn RAG·Reliability](./09.Post-retrieval%C2%B7Multi-turn%20RAG%C2%B7Reliability/) |
+| CI/CD | FastAPI 테스트, Black/Ruff/Mypy/Pytest, GitHub Actions | [10.CI_CD](./10.CI_CD/) |
+| 공동 실습 | TF-IDF, Attention, FastAPI, RAG pipeline, Git 협업 실습 | [joint_practice](./joint_practice/) |
 
 ## 사용 기술
 
-**Language**
+**Language**  
+Python, SQL
 
-* Python
-* SQL
+**AI / Data**  
+PyTorch, Transformers, Sentence Transformers, Scikit-learn, Pandas, NumPy
 
-**AI / Data**
+**Backend / Database**  
+FastAPI, Pydantic, PostgreSQL, SQLAlchemy
 
-* PyTorch
-* Pandas
-* NumPy
-* Scikit-learn
-* Sentence Transformers
+**Infra / Tools**  
+Docker, Docker Compose, Git, GitHub, GitHub Actions, Linux
 
-**Backend / Database**
+## 학습 방식
 
-* FastAPI
-* PostgreSQL
-* SQLAlchemy
+1. 개념을 이해하고 핵심 동작을 작은 코드로 직접 구현합니다.
+2. 실행 결과를 확인하며 입력·출력 형태와 내부 흐름을 이해합니다.
+3. 여러 기술이 연결되는 단계에서는 파이프라인 단위로 실습합니다.
+4. 실패한 테스트나 오류도 원인을 확인하고 수정 과정을 기록합니다.
 
-**Infra / Tools**
-
-* Docker
-* Docker Compose
-* Git
-* GitHub
-* GitHub Actions
-* Linux
-
----
-
-## 학습 방향
-
-각 실습은 단순히 라이브러리 사용법을 익히는 것보다
-**기술이 필요한 이유와 내부 동작을 이해하고 직접 구현해보는 것**에 중점을 두었습니다.
-
-초기에는 NLP와 딥러닝 모델 구조를 중심으로 학습했으며, 이후 RAG를 구현하면서 검색과 생성 과정까지 범위를 확장했습니다.
-
-이후에는 모델과 RAG 기능을 실제 서비스 형태로 구성하기 위해 FastAPI, Database, Docker, CI/CD 등을 학습하며 AI 기능이 애플리케이션과 시스템 환경에서 동작하는 전체 흐름을 이해하고자 했습니다.
-
----
-
-## Repository
-
-각 디렉토리에는 해당 주제에 대한 실습 코드와 학습 내용을 정리하고 있습니다.
-
-```text
-Study_project/
-├── NLP
-├── Embedding
-├── Transformer
-├── RAG
-├── FastAPI
-├── Database
-├── Docker
-├── RAG_Evaluation
-├── CI_CD
-└── ...
-```
-
-현재도 새로운 기술을 학습하고 실습한 내용을 지속적으로 추가하고 있습니다.
+각 디렉토리의 `README.md`에 해당 실습의 목적과 구현 내용을 정리했습니다.
