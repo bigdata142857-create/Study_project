@@ -1,11 +1,15 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase
 
-# Base 생성
+
 class Base(DeclarativeBase):
     pass
 
-# DB 연결
-engine = create_engine(
-    "postgresql://postgres:3822@localhost:5432/orm_practice2"
+
+DATABASE_URL = os.getenv(
+    "ORM_PRACTICE2_URL",
+    "postgresql://postgres@localhost:5432/orm_practice2",
 )
+engine = create_engine(DATABASE_URL)
