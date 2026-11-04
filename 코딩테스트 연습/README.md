@@ -23,18 +23,35 @@
 | 2026-10-27 | Python / 중첩 dict | 서버별 OK/FAIL 집계 | result[group][status] += 1 |
 | 2026-10-28 | Python / 상태 누적 | 서버별 실패 횟수와 마지막 상태 | 초기화와 공통 갱신 분리 |
 | 2026-10-28 | SQL / Window Function | 고객별 이전 주문 금액 | LAG, PARTITION BY, ORDER BY |
+| 2026-10-29 | Python / 연속 구간 | 누락 배치 구간 찾기 | start / prev / current |
+| 2026-10-29 | SQL / LEFT JOIN | 실행 이력 없는 파이프라인 포함 집계 | LEFT JOIN, SUM(CASE) |
+| 2026-10-31 | Python / Stack | START/END 로그 검증 | LIFO, top 확인, pop |
+| 2026-10-31 | SQL / Window Function | 파이프라인별 최근 실행 1건 | ROW_NUMBER + CTE |
+| 2026-11-04 | Python / 집계·정렬 | 장애 서버 TOP 3 | 다중 정렬 key |
+| 2026-11-04 | SQL / 최근 N건 집계 | 최근 3회 중 FAIL 2회 이상 | ROW_NUMBER → WHERE → GROUP BY → HAVING |
 
 ## 현재 자주 하는 실수
 
 - 문제에서 "무엇마다 하나를 뽑는지"와 PARTITION BY 기준을 다르게 잡는 실수
 - Window Function에서 PARTITION BY를 빼서 그룹 경계가 섞이는 실수
+- Window Function과 GROUP BY 집계를 같은 단계에서 처리하려는 실수
 - 집계가 필요하지 않은 문제에도 GROUP BY를 습관적으로 넣는 실수
 - CASE WHEN에서 THEN / ELSE / END 문법을 빠뜨리는 실수
+- COUNT(CASE WHEN ... THEN 1 ELSE 0 END)처럼 0도 COUNT된다는 점을 놓치는 실수
+- 집계 결과 조건을 WHERE에 두고 HAVING을 놓치는 실수
+- CTE 바깥에서 쓸 컬럼을 CTE SELECT에 포함하지 않는 실수
+- Window Function 결과를 같은 SELECT의 WHERE에서 바로 필터링하려는 실수
+- 최신 1건 문제에서 DENSE_RANK와 ROW_NUMBER의 차이를 놓치는 경우
 - 딕셔너리의 일부 필드만 갱신해서 서로 다른 시점의 데이터가 섞이는 실수
 - sorted()가 원본을 바꾸는 함수라고 착각하는 실수
 - dict를 쓸 때 key와 value 방향을 문제 목적에 맞게 잡지 못하는 경우
 - dict 안의 dict에서 현재 상태값 자체를 key로 쓸 수 있는데도 별도 조건문을 만들려는 경우
 - 처음 등장할 때만 필요한 처리와 매 행마다 필요한 처리를 분리하지 못해 코드가 중복되는 경우
+- 연속 구간 문제에서 start / prev / current 역할을 섞는 경우
+- 마지막 구간은 반복문 안에서 확정되지 않을 수 있다는 점을 놓치는 경우
+- Stack 문제에서 "존재 여부"만 보고 마지막 원소인지 확인하지 않는 경우
+- remove()와 pop()의 역할/복잡도 차이를 놓치는 경우
+- 서로 다른 형태의 값을 membership으로 비교해 불필요한 조건을 만드는 경우
 - 정답을 찾은 뒤에도 불필요하게 반복하는 경우
 
 ## 연습 원칙
