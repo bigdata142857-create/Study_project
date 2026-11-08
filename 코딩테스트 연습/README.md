@@ -29,6 +29,12 @@
 | 2026-10-31 | SQL / Window Function | 파이프라인별 최근 실행 1건 | ROW_NUMBER + CTE |
 | 2026-11-04 | Python / 집계·정렬 | 장애 서버 TOP 3 | 다중 정렬 key |
 | 2026-11-04 | SQL / 최근 N건 집계 | 최근 3회 중 FAIL 2회 이상 | ROW_NUMBER → WHERE → GROUP BY → HAVING |
+| 2026-11-06 | Python / Queue | FIFO 처리 순서 검증 | REQUEST → enqueue, COMPLETE → front 확인 |
+| 2026-11-06 | SQL / Window Function | 파이프라인 상태 변경 탐지 | LAG → 이전 상태 비교 |
+| 2026-11-07 | Python / dict·정렬 | 사용자별 로그인 실패 집계 | 조건 집계 + 다중 정렬 |
+| 2026-11-08 | Python / 상태 관리 | 연속 로그인 실패 탐지 | SUCCESS 시 연속 횟수 초기화 |
+| 2026-11-08 | SQL / 조건부 집계 | DB 접근 실패 사용자 집계 | COUNT + SUM(CASE) + HAVING |
+| 2026-11-08 | 개념 공부 | 암호화 / Linux 기초 | 해시·대칭키·비대칭키, 프로세스·로그·포트 |
 
 ## 현재 자주 하는 실수
 
@@ -53,6 +59,9 @@
 - remove()와 pop()의 역할/복잡도 차이를 놓치는 경우
 - 서로 다른 형태의 값을 membership으로 비교해 불필요한 조건을 만드는 경우
 - 정답을 찾은 뒤에도 불필요하게 반복하는 경우
+- membership 검사에서 리스트 안의 값과 다른 자료형(dict vs 문자열)을 비교하는 실수
+- sorted()를 호출만 하고 반환값을 저장하지 않아 원본이 정렬되지 않는 실수
+- 연속 횟수 문제에서 누적 횟수와 초기화 조건을 구분하지 못하는 경우
 
 ## 연습 원칙
 
@@ -74,5 +83,6 @@
 - SQL: JOIN, GROUP BY, HAVING, CASE, CTE, Subquery, Window Function
 - Python 코테: dict/set, 정렬, 문자열, Stack/Queue, 완전탐색, BFS/DFS 기초
 - 실무형 데이터 처리: 로그 집계, 중복 제거, 최신값 선택, 상태 관리, CSV/JSON 처리
+- 개념 공부: Linux 기본 명령어, DB 접근/운영 기초, 암호화·해시·키 관리 기초
 
 목표는 어려운 문제를 빨리 푸는 것보다, 자주 나오는 기본 패턴을 힌트 없이 15~20분 안에 구현할 수 있도록 만드는 것이다.
