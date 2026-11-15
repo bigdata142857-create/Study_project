@@ -38,6 +38,8 @@
 | 2026-11-09 | Python / BFS | 그래프 너비 우선 탐색 | Queue, 방문 처리, 이웃 확장 |
 | 2026-11-09 | Python / DFS | 그래프 깊이 우선 탐색 | Stack, 역순 push, 중복 확장 방지 |
 | 2026-11-10 | SQL / LEFT JOIN·집계 | 사용자별 접속 기록 집계 (11/9 제시) | COUNT, SUM(CASE), MAX, 이름 정렬 |
+| 2026-11-13 ~ 11-15 | Python / BFS·연결 요소 | 연결된 서버 그룹 개수 | 미방문 서버마다 BFS, Queue에 이웃 추가 |
+| 2026-11-15 | SQL / CTE·LEFT JOIN | 사용자별 최신 로그인 상태 | ROW_NUMBER, tie-breaker, ON의 rn 조건, COALESCE |
 
 ## 현재 자주 하는 실수
 
@@ -71,6 +73,12 @@
 - 최근 접속 시간 MAX()만 필요해도 ROW_NUMBER()와 CTE를 과하게 사용하는 경우
 - SELECT의 user_name과 user_id를 혼동하거나 ORDER BY에 잘못된 기준을 사용하는 경우
 - LEFT JOIN 집계에서 COUNT(*)와 COUNT(로그PK)의 결과 차이를 놓치는 경우
+- 연결 요소 BFS에서 이웃을 visited에만 넣고 Queue에 추가하지 않아 간접 연결을 누락하는 실수
+- BFS를 새로운 그룹에서 시작할 때 Queue의 생성·방문 처리·while 들여쓰기 범위를 혼동하는 실수
+- 최신 로그를 구하면서 PARTITION BY에 status를 추가해 사용자별 최신 1건 대신 상태별 최신 행을 만드는 실수
+- 최신순을 원하면서 ORDER BY의 DESC 또는 동시간대 tie-breaker를 놓치는 실수
+- LEFT JOIN 뒤 WHERE에 rn = 1을 걸어 로그 없는 사용자가 사라질 수 있다는 점
+- SQL의 문자열 리터럴에 작은따옴표를 빠뜨리거나 SELECT 항목의 쉼표가 누락되는 실수
 
 ## 연습 원칙
 
