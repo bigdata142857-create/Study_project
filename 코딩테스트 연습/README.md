@@ -40,6 +40,8 @@
 | 2026-11-10 | SQL / LEFT JOIN·집계 | 사용자별 접속 기록 집계 (11/9 제시) | COUNT, SUM(CASE), MAX, 이름 정렬 |
 | 2026-11-13 ~ 11-15 | Python / BFS·연결 요소 | 연결된 서버 그룹 개수 | 미방문 서버마다 BFS, Queue에 이웃 추가 |
 | 2026-11-15 | SQL / CTE·LEFT JOIN | 사용자별 최신 로그인 상태 | ROW_NUMBER, tie-breaker, ON의 rn 조건, COALESCE |
+| 2026-11-16 | Python / BFS·최단 거리 | 서버 간 최소 연결 횟수 | distance를 방문 기록으로 활용, 이웃의 거리 = 현재 거리 + 1, get 기본값 |
+| 2026-11-18 | SQL / Window Function·중복 탐지 | 중복 메타데이터 정리 대상 조회 | 복합 PARTITION BY, 최신 기록 rn = 1 유지, rn > 1 조회 |
 
 ## 현재 자주 하는 실수
 
@@ -79,6 +81,11 @@
 - 최신순을 원하면서 ORDER BY의 DESC 또는 동시간대 tie-breaker를 놓치는 실수
 - LEFT JOIN 뒤 WHERE에 rn = 1을 걸어 로그 없는 사용자가 사라질 수 있다는 점
 - SQL의 문자열 리터럴에 작은따옴표를 빠뜨리거나 SELECT 항목의 쉼표가 누락되는 실수
+- BFS 거리 계산에서 `{1}`을 숫자 1로 착각하거나, 이미 발견한 노드의 거리를 다시 증가시키는 실수
+- BFS에서 `graph[start]`만 반복해 현재 노드의 이웃을 확장하지 못하거나 Queue에 이웃을 넣지 않는 실수
+- 도달 불가능한 target을 `distance[target]`으로 조회해 KeyError가 발생하는 경우
+- 중복 데이터 탐지에서 고객 ID만으로 PARTITION BY를 구성해 다른 metadata_key를 같은 그룹으로 묶는 실수
+- '최신 행 유지'와 '정리 대상 출력'을 혼동해 `rn = 1`과 `rn > 1`을 반대로 사용하는 실수
 
 ## 연습 원칙
 
