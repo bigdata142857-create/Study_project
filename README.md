@@ -23,6 +23,8 @@ Python, SQL, PostgreSQL, Docker 및 AI/NLP·RAG를 직접 실습하며 학습 �
 
 | 날짜 | 주제 | 배운 점 |
 |---|---|---|
+| 2026-11-18 | [중복 메타데이터 탐지 SQL](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-18_SQL_%EC%A4%91%EB%B3%B5%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%95%EB%A6%AC%EB%8C%80%EC%83%81%ED%83%90%EC%A7%80.sql) | 복합 PARTITION BY, 최신 행 유지와 과거 중복 기록 조회 구분 |
+| 2026-11-16 | [서버 간 최단 연결 거리 BFS](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-16_Python_%EC%84%9C%EB%B2%84%EA%B0%84_%EC%B5%9C%EB%8B%A8%EC%97%B0%EA%B2%B0%EA%B1%B0%EB%A6%AC_BFS.py) | Queue 탐색, distance로 최단 거리·방문 여부 관리, 미도달 -1 처리 |
 | 2026-11-15 | [사용자별 최근 로그인 상태 SQL](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-15_SQL_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%B3%84_%EC%B5%9C%EA%B7%BC%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%83%81%ED%83%9C.sql) | ROW_NUMBER로 최신 1건 선정, LEFT JOIN으로 기록 없는 사용자 유지, COALESCE로 NULL 처리 |
 | 2026-11-13 ~ 11-15 | [서버 연결 그룹 개수 BFS](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-13_Python_%EC%84%9C%EB%B2%84%EC%97%B0%EA%B2%B0%EA%B7%B8%EB%A3%B9_BFS.py) | 미방문 서버를 기준으로 BFS 반복, Queue에 이웃 추가, 방문 집합 공유 |
 | 2026-11-10 | [DB 사용자별 접속 기록 집계](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-10_SQL_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%B3%84_%EC%A0%91%EC%86%8D%EA%B8%B0%EB%A1%9D_%EC%A7%91%EA%B3%84.sql) | LEFT JOIN, COUNT, SUM(CASE), MAX |
