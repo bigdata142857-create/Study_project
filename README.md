@@ -23,6 +23,7 @@ Python, SQL, PostgreSQL, Docker 및 AI/NLP·RAG를 직접 실습하며 학습 �
 
 | 날짜 | 주제 | 배운 점 |
 |---|---|---|
+| 2026-11-19 | [10분 이내 로그인 실패 탐지 — 독립 풀이 실패](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-19_Python_10%EB%B6%84%EC%9D%B4%EB%82%B4_%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%8B%A4%ED%8C%A8_%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%94%A9%EC%9C%88%EB%8F%84%EC%9A%B0.py) | AI 도움을 받아 코드는 완성했으나 while 슬라이딩 윈도우 동작 추적과 검사 시점 이해가 부족해 재학습 대상으로 기록 |
 | 2026-11-18 | [중복 메타데이터 탐지 SQL](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-18_SQL_%EC%A4%91%EB%B3%B5%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%A0%95%EB%A6%AC%EB%8C%80%EC%83%81%ED%83%90%EC%A7%80.sql) | 복합 PARTITION BY, 최신 행 유지와 과거 중복 기록 조회 구분 |
 | 2026-11-16 | [서버 간 최단 연결 거리 BFS](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-16_Python_%EC%84%9C%EB%B2%84%EA%B0%84_%EC%B5%9C%EB%8B%A8%EC%97%B0%EA%B2%B0%EA%B1%B0%EB%A6%AC_BFS.py) | Queue 탐색, distance로 최단 거리·방문 여부 관리, 미도달 -1 처리 |
 | 2026-11-15 | [사용자별 최근 로그인 상태 SQL](./%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%97%B0%EC%8A%B5/2026-11-15_SQL_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%B3%84_%EC%B5%9C%EA%B7%BC%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%83%81%ED%83%9C.sql) | ROW_NUMBER로 최신 1건 선정, LEFT JOIN으로 기록 없는 사용자 유지, COALESCE로 NULL 처리 |
